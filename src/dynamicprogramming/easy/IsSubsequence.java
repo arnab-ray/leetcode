@@ -1,16 +1,6 @@
 package dynamicprogramming.easy;
 
 public class IsSubsequence {
-    public boolean isSubsequence_(String s, String t) {
-        int sTracker = 0, tTracker = 0;
-        while (sTracker < s.length() && tTracker < t.length()) {
-            if(s.charAt(sTracker) == t.charAt(tTracker))
-                sTracker++;
-            tTracker++;
-        }
-
-        return sTracker == s.length();
-    }
 
     private int longestCommonSubsequence(String s, String t) {
         int m = s.length();
