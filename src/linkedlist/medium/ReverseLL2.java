@@ -9,40 +9,29 @@ public class ReverseLL2 {
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
-    private ListNode reverseUtil(ListNode head, int n) {
-        if(head != null) {
-            int k = 0;
-            ListNode prev = null;
-            ListNode current = head;
-            ListNode next;
-
-            while (k < n && current != null) {
-                k++;
-                next = current.next;
-                current.next = prev;
-                prev = current;
-                current = next;
-            }
-
-            head.next = current;
-            head = prev;
-        }
-
-        return head;
-    }
-
     // [1,2,3,4,5] [2,4]
     // [3,5] [1,2]
     public ListNode reverseBetween(ListNode head, int m, int n) {
         if(head == null || m == n)
             return head;
 
-        ListNode temp = head;
-        for(int i = 1; i < m - 1 && temp != null; i++)
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode temp = dummy;
+        for(int i = 0; i < m - 1; i++)
             temp = temp.next;
 
-        ListNode dummyHead = temp;
-        temp = reverseUtil(temp, n - m - 1);
-        return dummyHead == head ? temp : head;
+        ListNode prev = temp;
+        ListNode tail = temp.next;
+
+        int count = n - m;
+        while (count-- > 0) {
+            ListNode temp_ = prev.next;
+            prev.next = tail.next;
+            tail.next = tail.next.next;
+            prev.next.next = temp_;
+        }
+
+        return dummy.next;
     }
 }
