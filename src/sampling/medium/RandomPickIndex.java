@@ -1,4 +1,4 @@
-package reservoirsampling.medium;
+package sampling.medium;
 
 import java.util.*;
 
