@@ -30,7 +30,7 @@ public class TimeToInformAllEmployees {
         queue.add(new Node(headID, informTime[headID]));
         visited[headID] = true;
 
-        int cost = 0, parentCost = 0;
+        int cost = 0;
         while (!queue.isEmpty()) {
             Node node = queue.poll();
             cost = Math.max(cost, node.cost);
