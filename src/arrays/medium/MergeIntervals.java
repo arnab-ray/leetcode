@@ -14,7 +14,7 @@ public class MergeIntervals {
         }
     }
 
-    private static final Comparator<Node> comparator = (o1, o2) -> o1.first - o2.first;
+    private static final Comparator<Node> comparator = Comparator.comparingInt(o -> o.first);
 
     public int[][] merge(int[][] intervals) {
         List<Node> nodeList = new ArrayList<>();
