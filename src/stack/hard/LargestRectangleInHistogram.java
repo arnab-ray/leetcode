@@ -14,18 +14,14 @@ public class LargestRectangleInHistogram {
             else {
                 top = stack.pop();
                 areaWithTop = heights[top] * (stack.empty() ? i : i - stack.peek() - 1);
-
-                if (maxArea < areaWithTop)
-                    maxArea = areaWithTop;
+                maxArea = Math.max(maxArea, areaWithTop);
             }
         }
 
         while (!stack.empty()) {
             top = stack.pop();
             areaWithTop = heights[top] * (stack.empty() ? i : i - stack.peek() - 1);
-
-            if (maxArea < areaWithTop)
-                maxArea = areaWithTop;
+            maxArea = Math.max(maxArea, areaWithTop);
         }
 
         return maxArea;
