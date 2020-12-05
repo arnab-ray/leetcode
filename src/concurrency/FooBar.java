@@ -1,7 +1,7 @@
 package concurrency;
 
 public class FooBar {
-    private int n;
+    private final int n;
     private static volatile boolean flag;
 
     public FooBar(int n) {
