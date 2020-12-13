@@ -1,9 +1,6 @@
 package greedy.medium;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class BoatsToSavePeople {
     public int numRescueBoats(int[] people, int limit) {
