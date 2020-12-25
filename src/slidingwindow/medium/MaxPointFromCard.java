@@ -1,4 +1,4 @@
-package dynamicprogramming.medium;
+package slidingwindow.medium;
 
 public class MaxPointFromCard {
     public int maxScore(int[] cardPoints, int k) {
