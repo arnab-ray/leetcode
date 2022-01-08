@@ -1,7 +1,7 @@
 package linkedlist.medium;
 
 public class ReverseLL2 {
-    private class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
         ListNode() {}
@@ -11,20 +11,20 @@ public class ReverseLL2 {
 
     // [1,2,3,4,5] [2,4]
     // [3,5] [1,2]
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        if(head == null || m == n)
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(head == null || left == right)
             return head;
 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode temp = dummy;
-        for(int i = 0; i < m - 1; i++)
+        for(int i = 0; i < left - 1; i++)
             temp = temp.next;
 
         ListNode prev = temp;
         ListNode tail = temp.next;
 
-        int count = n - m;
+        int count = right - left;
         while (count-- > 0) {
             ListNode temp_ = prev.next;
             prev.next = tail.next;

@@ -1,7 +1,7 @@
 package linkedlist.medium;
 
 public class ReorderLL {
-    private class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
         ListNode() {}

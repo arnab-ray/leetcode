@@ -1,7 +1,7 @@
 package linkedlist.easy;
 
 public class PalindromeLL {
-    public class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
         ListNode() {}
@@ -63,8 +63,6 @@ public class PalindromeLL {
         return true;
     }
 
-
-
     public boolean isPalindrome(ListNode head) {
         int size = getSize(head);
         if(size == 1)
@@ -72,6 +70,6 @@ public class PalindromeLL {
 
         ListNode middleNode = getMiddleNode(head);
         ListNode secondHead = size % 2 == 0 ? reverseLL(middleNode) : reverseLL(middleNode.next);
-        return size % 2 == 0 ? isPalindromeUtil(head, secondHead) : isPalindromeUtil(head, secondHead);
+        return isPalindromeUtil(head, secondHead);
     }
 }

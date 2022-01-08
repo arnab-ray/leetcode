@@ -1,7 +1,7 @@
 package linkedlist.easy;
 
 public class DeleteNode {
-    public class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
         ListNode() {}
@@ -11,7 +11,6 @@ public class DeleteNode {
 
     public void deleteNode(ListNode node) {
         while (node.next.next != null) {
-            node.val = node.next.val;
             node = node.next;
         }
 
