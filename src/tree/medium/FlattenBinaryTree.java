@@ -1,5 +1,6 @@
 package tree.medium;
 
+// #114
 public class FlattenBinaryTree {
      public class TreeNode {
           int val;
@@ -15,17 +16,18 @@ public class FlattenBinaryTree {
      }
  
     public void flatten(TreeNode root) {
-         if(root == null || (root.left == null && root.right == null))
+         if(root == null || (root.left == null && root.right == null)) {
              return;
-
-         else if(root.left != null) {
+         } else if(root.left != null) {
              flatten(root.left);
-             TreeNode right = root.right;
              flatten(root.right);
+
+             TreeNode right = root.right;
              root.right = root.left;
 
              TreeNode dummy = root.left;
              root.left = null;
+
              while (dummy.right != null)
                  dummy = dummy.right;
              dummy.right = right;
