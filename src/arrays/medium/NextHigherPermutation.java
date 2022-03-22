@@ -2,6 +2,7 @@ package arrays.medium;
 
 import java.util.Arrays;
 
+// #31
 public class NextHigherPermutation {
     private void rotateArray(int[] nums, int low, int high) {
         while (low < high) {
