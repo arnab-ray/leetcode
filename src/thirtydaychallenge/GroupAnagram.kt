@@ -6,7 +6,7 @@ object GroupAnagram {
         strs.forEach {
             val chars = IntArray(26)
             it.chars().forEach { char ->
-                chars[char.minus('a'.toInt())] += 1
+                chars[char.minus('a'.code)] += 1
             }
 
             val key = chars.joinToString()
