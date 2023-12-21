@@ -44,7 +44,7 @@ public class VerticalTraversal {
         List<Node> list = new LinkedList<>();
         verticalTraversalUtil(root, 0, 0, list);
 
-        Collections.sort(list, (p1, p2) -> p1.x == p2.x ? p1.y == p2.y ? p1.val- p2.val : p2.y - p1.y : p1.x - p2.x);
+        list.sort((p1, p2) -> p1.x == p2.x ? p1.y == p2.y ? p1.val - p2.val : p2.y - p1.y : p1.x - p2.x);
 
         Map<Integer, List<Integer>> map = new TreeMap<>();
         for(Node n : list) {
