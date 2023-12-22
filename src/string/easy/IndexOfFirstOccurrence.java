@@ -1,9 +1,6 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+package string.easy;
 
-public class Solution {
-
+public class IndexOfFirstOccurrence {
     public int strStr(String haystack, String needle) {
         if (haystack.length() < needle.length()) return -1;
 
