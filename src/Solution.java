@@ -1,24 +1,46 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Solution {
 
-    public int strStr(String haystack, String needle) {
-        if (haystack.length() < needle.length()) return -1;
+    class Group {
+        String groupName;
+        Expression[] expressions;
+    }
 
-        int needlePos = 0;
-        for (int i = 0; i < haystack.length(); i++) {
-            int start = i;
-            while (start < haystack.length() && needlePos < needle.length() && haystack.charAt(start) == needle.charAt(needlePos)) {
-                start++;
-                needlePos++;
-            }
+    class Expression {
+        String name;
+        String expressionType;
+        String expression;
+        String[] dependencies;
+    }
 
-            if (needlePos == needle.length()) return start - needle.length();
-            needlePos = 0;
+    private static List<Character> getChars(String s) {
+        List<Character> chars = new ArrayList<>();
+        for(int i = 0; i < s.length() && i + 1 < s.length() && i + 2 < s.length(); i++) {
+            if (s.charAt(i) == '$' && s.charAt(i + 1) == '{')
+                chars.add(s.charAt(i + 2));
         }
 
-        return -1;
+        return chars;
+    }
+
+    public static void main(String[] args) {
+        String in = "${a} + ${b} + 10";
+        String[] strs = in.split(" \\+ ");
+        System.out.println(strs.length);
+        for (int i = 0; i < strs.length; i++) {
+            if (strs[i].startsWith("$"))
+                System.out.println(strs[i].substring(2, strs[i].length() - 1));
+            else {
+                System.out.println(strs[i]);
+            }
+        }
+        List<Character> chars = getChars("${a} + ${b} + 10");
+        for (int i = 0; i < chars.size(); i++) {
+            System.out.println(chars.get(i));
+        }
     }
 }
