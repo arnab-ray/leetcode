@@ -1,4 +1,4 @@
-package bfs;
+package bfs.medium;
 
 import java.util.*;
 
