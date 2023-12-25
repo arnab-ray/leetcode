@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class JumpGame2 {
     public int jump(int[] nums) {
-        int maxJumpLength = 0;
         int[] minJump = new int[nums.length];
         Arrays.fill(minJump, Integer.MAX_VALUE);
 
