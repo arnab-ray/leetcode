@@ -5,10 +5,8 @@ import java.util.Set;
 
 public class LongestConsecutiveSequence {
     public int longestConsecutive(int[] nums) {
-        Set<Integer> set = new HashSet<>();
         Set<Integer> unvisited = new HashSet<>();
         for (int num : nums) {
-            set.add(num);
             unvisited.add(num);
         }
 
