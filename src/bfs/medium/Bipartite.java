@@ -1,5 +1,6 @@
 package bfs.medium;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -10,8 +11,7 @@ public class Bipartite {
         int[] colour = new int[numNodes];
         boolean[] visited = new boolean[numNodes];
 
-        for(int i = 0; i < numNodes; i++)
-            colour[i] = -1;
+        Arrays.fill(colour, -1);
 
         for(int i = 0; i < numNodes; i++) {
             if(colour[i] == -1) {
