@@ -15,12 +15,12 @@ public class AllPathFromSourceToTarget {
         return result;
     }
 
-    private void dfsUtil(Integer node, int[][] graph, List<Integer> queue, boolean[] visited, List<List<Integer>> result) {
+    private void dfsUtil(int node, int[][] graph, List<Integer> queue, boolean[] visited, List<List<Integer>> result) {
         if (node == graph.length - 1) {
             result.add(new ArrayList<>(queue));
         } else {
             visited[node] = true;
-            for (Integer i : graph[node]) {
+            for (int i : graph[node]) {
                 if (!visited[i]) {
                     queue.add(i);
                     dfsUtil(i, graph, queue, visited, result);
