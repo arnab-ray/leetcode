@@ -14,8 +14,8 @@ public class CountSubIslands {
 
     public int countSubIslands(int[][] grid1, int[][] grid2) {
         List<List<Point>> islands = new ArrayList<>();
-        boolean[][] visited = new boolean[grid1.length][grid1[0].length];
-        int count = 0;
+        boolean[][] visited = new boolean[grid2.length][grid2[0].length];
+
         for (int i = 0; i < grid2.length; i++) {
             for (int j = 0; j < grid2[0].length; j++) {
                 if (!visited[i][j] && grid2[i][j] == 1) {
@@ -26,6 +26,7 @@ public class CountSubIslands {
             }
         }
 
+        int count = 0;
         for (List<Point> island : islands) {
             boolean flag = true;
             for (Point p : island) {
