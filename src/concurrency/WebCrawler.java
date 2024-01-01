@@ -57,7 +57,7 @@ public class WebCrawler {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
     }
