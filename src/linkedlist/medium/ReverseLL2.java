@@ -22,15 +22,17 @@ public class ReverseLL2 {
             temp = temp.next;
 
         ListNode prev = temp;
-        ListNode tail = temp.next;
+        ListNode curr = temp.next;
 
-        int count = right - left;
-        while (count-- > 0) {
-            ListNode temp_ = prev.next;
-            prev.next = tail.next;
-            tail.next = tail.next.next;
-            prev.next.next = temp_;
+        for (int i = 0; i < right - left + 1; i++) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
+
+        temp.next.next = curr;
+        temp.next = prev;
 
         return dummy.next;
     }

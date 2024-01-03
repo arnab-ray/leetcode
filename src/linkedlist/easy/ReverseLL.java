@@ -20,10 +20,9 @@ public class ReverseLL {
 
         ListNode prev = null;
         ListNode current = head;
-        ListNode next;
 
         while (current != null) {
-            next = current.next;
+            ListNode next = current.next;
             current.next = prev;
             prev = current;
             current = next;
