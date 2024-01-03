@@ -1,16 +1,10 @@
 package greedy.medium;
 
-
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class MinimumNumberOfArrows {
-    private static Comparator<int[]> comparator = new Comparator<int[]>() {
-        @Override
-        public int compare(int[] o1, int[] o2) {
-            return o1[1] - o2[1];
-        }
-    };
+    private static Comparator<int[]> comparator = (o1, o2) -> o1[1] - o2[1];
 
     public int findMinArrowShots(int[][] points) {
         int n = points.length;
