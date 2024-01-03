@@ -9,11 +9,9 @@ public class BoatsToSavePeople {
 
         int numBoats = 0;
         while (start <= end) {
-            if (people[start] == limit) {
+            if (people[start] >= limit) {
                 numBoats++;
                 start++;
-            } else if (people[start] > limit) {
-                start++; numBoats++;
             } else if (people[start] + people[end] <= limit) {
                 start++; end--; numBoats++;
             } else {
