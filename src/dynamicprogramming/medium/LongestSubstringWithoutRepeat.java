@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class LongestSubstringWithoutRepeat {
     public int lengthOfLongestSubstring(String s) {
-        if(s.length() == 0)
-            return s.length();
+        if(s.isEmpty())
+            return 0;
 
         int[] len = new int[s.length()];
         int start = 0;

@@ -49,19 +49,9 @@ public class WiggleSequence {
             }
         }
 
-        for(int i = 0; i < nums.length; i++)
-            System.out.print(lis[i] + " ");
-        System.out.println();
-
-        for(int i = 0; i < nums.length; i++)
-            System.out.print(lds[i] + " ");
-        System.out.println();
-
         int maxLength = Integer.MIN_VALUE;
         for(int i = 0; i < nums.length; i++) {
-            int length = Math.max(lis[i], lds[i]);
-            if(length > maxLength)
-                maxLength = length;
+            maxLength = Math.max(maxLength, Math.max(lis[i], lds[i]));
         }
 
         return maxLength;
