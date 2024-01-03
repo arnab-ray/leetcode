@@ -23,7 +23,7 @@ public class SumRootToLeafNumbers {
         if(root.left == null && root.right == null) {
             int pathSum = 0;
             for(int i = path.size() - 1; i >= 0; i--) {
-                pathSum += Math.pow(10, path.size() - i - 1) * path.get(i);
+                pathSum += (int) (Math.pow(10, path.size() - i - 1) * path.get(i));
             }
             sum.set(sum.get() + pathSum);
         }

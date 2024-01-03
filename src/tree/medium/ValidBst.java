@@ -17,13 +17,13 @@ public class ValidBst {
       }
     }
 
-    private void BstTraversal(TreeNode root, List<Integer> path) {
+    private void bstTraversal(TreeNode root, List<Integer> path) {
         if(root == null)
             return;
 
-        BstTraversal(root.left, path);
+        bstTraversal(root.left, path);
         path.add(root.val);
-        BstTraversal(root.right, path);
+        bstTraversal(root.right, path);
     }
 
     public boolean isValidBST(TreeNode root) {
@@ -31,7 +31,7 @@ public class ValidBst {
             return true;
 
         List<Integer> path = new ArrayList<>();
-        BstTraversal(root, path);
+        bstTraversal(root, path);
 
         for(int i = 1; i < path.size(); i++) {
             if(path.get(i - 1) >= path.get(i))
