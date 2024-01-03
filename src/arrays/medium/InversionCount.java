@@ -1,11 +1,11 @@
 package arrays.medium;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InversionCount {
 
     private static int mergeCount(int[] arr, int low, int high) {
-        int[] temp = new int[arr.length];
         int invCount = 0;
 
         if (low < high) {
@@ -13,29 +13,29 @@ public class InversionCount {
 
             invCount += mergeCount(arr, low, mid);
             invCount += mergeCount(arr, mid + 1, high);
-            invCount += mergeAggregateCount(arr, temp, low, mid + 1, high);
+            invCount += mergeAggregateCount(arr, low, mid + 1, high);
         }
 
         return invCount;
     }
 
-    private static int mergeAggregateCount(int[] arr, int[] temp, int low, int mid, int high) {
-        int i = low, j = mid, k = low, swaps = 0;
+    private static int mergeAggregateCount(int[] arr, int low, int mid, int high) {
+        int[] left = Arrays.copyOfRange(arr, low, mid + 1);
+        int[] right = Arrays.copyOfRange(arr, mid + 1, high);
 
-        while (i < mid && j < high + 1) {
-            if (arr[i] <= arr[j]) {
-                temp[k++] = arr[i++];
+        int i = 0, j = 0, k = low, swaps = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[i]) {
+                arr[k++] = left[i++];
             } else {
-                temp[k++] = arr[j++];
-                swaps += (mid - i);
+                arr[k++] = right[j++];
+                swaps += (mid + 1) - (low + i);
             }
         }
 
-        while (i < mid) temp[k++] = arr[i++];
-        while (j < high + 1) temp[k++] = arr[j++];
-
-        for (int u = low; u < high + 1; u++)
-            arr[u] = temp[u];
+        while (i < left.length) arr[k++] = left[i++];
+        while (j < right.length) arr[k++] = right[j++];
 
         return swaps;
     }
