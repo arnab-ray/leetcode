@@ -34,7 +34,7 @@ public class ReorganizeString {
             }
         }
 
-        if(queue.size() > 0)
+        if(!queue.isEmpty())
             sb.append(queue.poll());
 
         return sb.toString();
