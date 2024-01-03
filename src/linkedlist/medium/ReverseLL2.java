@@ -15,7 +15,7 @@ public class ReverseLL2 {
         if(head == null || left == right)
             return head;
 
-        ListNode dummy = new ListNode(0);
+        ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode temp = dummy;
         for(int i = 0; i < left - 1; i++)
