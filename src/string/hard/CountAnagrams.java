@@ -27,10 +27,11 @@ public class CountAnagrams {
     }
 
     public static int countAnagrams(String s) {
+        int modulo = 1000000007;
         String[] strs = s.split(" ");
         int total = 1;
         for (String str : strs) {
-            total = (total * countPermutation(str)) % (new Double(Math.pow(10, 9)).intValue() + 7);
+            total = (total * countPermutation(str)) % modulo;
         }
 
         return total;

@@ -3,7 +3,7 @@ package string.easy;
 import java.util.*;
 
 public class LongestCommonPrefix {
-    private String createString(List<Character> prefixChars) {
+    private static String createString(List<Character> prefixChars) {
         StringBuilder sb = new StringBuilder();
         for (Character c : prefixChars)
             sb.append(c);
@@ -11,7 +11,7 @@ public class LongestCommonPrefix {
         return sb.toString();
     }
 
-    public String longestCommonPrefix(String[] strs) {
+    public static String longestCommonPrefix(String[] strs) {
         if (strs.length == 0)
             return "";
 
@@ -23,6 +23,7 @@ public class LongestCommonPrefix {
             }
 
             if (charsSeen.size() > 1) {
+                System.out.println("charseen: " + charsSeen.size());
                 return createString(prefixChars);
             } else {
                 prefixChars.add(charsSeen.iterator().next());
@@ -30,5 +31,33 @@ public class LongestCommonPrefix {
         }
 
         return createString(prefixChars);
+    }
+
+    public String longestCommonPrefix2(String[] strs) {
+        StringBuilder sb = new StringBuilder();
+        int minVal = Integer.MAX_VALUE;
+
+        for (String str : strs) {
+            minVal = Math.min(minVal, str.length());
+        }
+
+        for (int i = 0; i < minVal; i++) {
+            char start = strs[0].charAt(i);
+
+            for (int j = 1; j < strs.length; j++) {
+                if (strs[j].charAt(i) != start) {
+                    return sb.toString();
+                }
+            }
+
+            sb.append(start);
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String[] input = new String[] {"flower", "flow", "flog", "floppy"};
+        System.out.println(longestCommonPrefix(input));
     }
 }
