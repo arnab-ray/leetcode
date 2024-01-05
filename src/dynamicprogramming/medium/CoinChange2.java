@@ -7,7 +7,7 @@ public class CoinChange2 {
 
         for (int coin : coins) {
             for (int i = coin; i <= amount; i++) {
-                if (coin <= amount && i - coin >= 0) {
+                if (i - coin >= 0) {
                     numWays[i] += numWays[i - coin];
                 }
             }

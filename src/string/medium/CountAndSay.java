@@ -24,6 +24,7 @@ public class CountAndSay {
         s.append(counter);
         s.append(currChar);
 
+        System.out.println(s);
         return s.toString();
     }
 
