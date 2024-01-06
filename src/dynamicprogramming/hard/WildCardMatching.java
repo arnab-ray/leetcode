@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 // #44
 public class WildCardMatching {
+    // '?' Matches any single character.
+    // '*' Matches any sequence of characters (including the empty sequence).
     public boolean isMatch(String s, String p) {
         int m = s.length();
         int n = p.length();
@@ -64,16 +66,14 @@ public class WildCardMatching {
             return 1;
         }
 
-        if (dp[m][n] != -1) {
-            return dp[m][n];
-        }
-
-        if (s.charAt(m) == p.charAt(n) || p.charAt(n) == '?') {
-            dp[m][n] = isMatchUtil(s, m - 1, p, n - 1, dp);
-        } else if (p.charAt(n) == '*') {
-            dp[m][n] = isMatchUtil(s, m - 1, p, n, dp) | isMatchUtil(s, m, p, n - 1, dp);
-        } else {
-            dp[m][n] = 0;
+        if (dp[m][n] == -1) {
+            if (s.charAt(m) == p.charAt(n) || p.charAt(n) == '?') {
+                dp[m][n] = isMatchUtil(s, m - 1, p, n - 1, dp);
+            } else if (p.charAt(n) == '*') {
+                dp[m][n] = isMatchUtil(s, m - 1, p, n, dp) | isMatchUtil(s, m, p, n - 1, dp);
+            } else {
+                dp[m][n] = 0;
+            }
         }
 
         return dp[m][n];
