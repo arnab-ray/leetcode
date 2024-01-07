@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 // #31
 public class NextHigherPermutation {
-    private void rotateArray(int[] nums, int low, int high) {
+    private static void rotateArray(int[] nums, int low, int high) {
         while (low < high) {
             int temp = nums[low];
             nums[low++] = nums[high];
@@ -12,7 +12,7 @@ public class NextHigherPermutation {
         }
     }
 
-    public void nextPermutation(int[] nums) {
+    public static void nextPermutation(int[] nums) {
         int lowerIndex = -1;
         for(int i = nums.length - 1; i > 0; i--) {
             if(nums[i - 1] < nums[i]) {
@@ -21,6 +21,7 @@ public class NextHigherPermutation {
             }
         }
 
+        System.out.println(lowerIndex);
         if(lowerIndex == -1) {
             rotateArray(nums, 0, nums.length - 1);
         } else {
@@ -38,5 +39,13 @@ public class NextHigherPermutation {
             int high = nums.length;
             Arrays.sort(nums, low, high);
         }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[] {1, 3, 6, 5, 7, 8};
+        nextPermutation(nums);
+        for (int i : nums)
+            System.out.print(i + " ");
+        System.out.println();
     }
 }
