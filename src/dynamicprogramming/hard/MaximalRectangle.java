@@ -30,20 +30,14 @@ public class MaximalRectangle {
     public int maximalRectangle(char[][] matrix) {
         int maxArea = 0;
         if (matrix.length > 0) {
-            int m = matrix.length;
-            int n = matrix[0].length;
-
             maxArea = largestRectangleArea(matrix[0]);
 
             for (int i = 1; i < matrix.length; i++) {
-                System.out.println("Row: " + i);
                 for (int j = 0; j < matrix[0].length; j++) {
                     if (matrix[i][j] == '1') {
                         matrix[i][j] = (char) (matrix[i - 1][j] + 1);
-                        System.out.print(matrix[i][j] + " ");
                     }
                 }
-                System.out.println();
 
                 int area = largestRectangleArea(matrix[i]);
                 maxArea = Math.max(maxArea, area);
