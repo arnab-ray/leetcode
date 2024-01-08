@@ -27,11 +27,8 @@ public class LongestSubstringWithoutRepeat {
 
         int max = Integer.MIN_VALUE;
         for(int length : len) {
-            System.out.print(length + " ");
-            if (length > max)
-                max = length;
+            max = Math.max(max, length);
         }
-        System.out.println();
         return max;
     }
 }
