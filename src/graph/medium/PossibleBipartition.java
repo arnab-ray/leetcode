@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class PossibleBipartition {
-    private boolean bfsUtil(int i, boolean[] visited, int[] colour, List<Integer>[] adjList) {
+    private boolean bfsUtil(int i, boolean[] visited, int[] colour, List<List<Integer>> adjList) {
         visited[i] = true;
         colour[i] = 1;
 
@@ -15,7 +15,7 @@ public class PossibleBipartition {
 
         while (!queue.isEmpty()) {
             Integer u = queue.poll();
-            for(Integer v : adjList[u]) {
+            for(Integer v : adjList.get(u)) {
                 if (colour[v] == colour[u])
                     return false;
                 if(!visited[v]) {
@@ -29,25 +29,25 @@ public class PossibleBipartition {
         return true;
     }
 
-    public boolean possibleBipartition(int N, int[][] dislikes) {
-        if(N == 0 || N == 1)
+    public boolean possibleBipartition(int n, int[][] dislikes) {
+        if(n == 0 || n == 1)
             return true;
 
-        boolean[] visited = new boolean[N];
-        int[] colour = new int[N];
+        boolean[] visited = new boolean[n];
+        int[] colour = new int[n];
 
-        List<Integer>[] adjList = new ArrayList[N];
-        for(int i = 0; i < N; i++) {
-            adjList[i] = new ArrayList<>();
+        List<List<Integer>> adjList = new ArrayList<>(n);
+        for(int i = 0; i < n; i++) {
+            adjList.add(new ArrayList<>());
         }
 
         for (int[] dislike : dislikes) {
-            adjList[dislike[0] - 1].add(dislike[1] - 1);
-            adjList[dislike[1] - 1].add(dislike[0] - 1);
+            adjList.get(dislike[0] - 1).add(dislike[1] - 1);
+            adjList.get(dislike[1] - 1).add(dislike[0] - 1);
         }
 
         boolean result = true;
-        for(int i = 0; i < N; i++) {
+        for(int i = 0; i < n; i++) {
             if(!visited[i]) {
                 result = bfsUtil(i, visited, colour, adjList);
             }

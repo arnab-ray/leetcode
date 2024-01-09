@@ -15,13 +15,13 @@ public class TimeToInformAllEmployees {
     }
 
     public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
-        List<Integer>[] adjList = new ArrayList[n];
+        List<List<Integer>> adjList = new ArrayList<>(n);
         for(int i = 0; i < n; i++)
-            adjList[i] = new ArrayList<>();
+            adjList.add(new ArrayList<>());
 
         for(int i = 0; i < n; i++) {
             if(manager[i] != -1)
-                adjList[manager[i]].add(i);
+                adjList.get(manager[i]).add(i);
         }
 
         boolean[] visited = new boolean[n];
@@ -35,7 +35,7 @@ public class TimeToInformAllEmployees {
             Node node = queue.poll();
             cost = Math.max(cost, node.cost);
 
-            for (Integer v : adjList[node.i]) {
+            for (Integer v : adjList.get(node.i)) {
                 if(!visited[v]) {
                     visited[v] = true;
                     queue.add(new Node(v, node.cost + informTime[v]));

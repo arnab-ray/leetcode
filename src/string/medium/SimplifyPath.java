@@ -14,10 +14,9 @@ public class SimplifyPath {
             if (string.equals(".")) {
                 continue;
             } else if (string.equals("..")) {
-                if(!stack.isEmpty())
+                if(!stack.isEmpty()) {
                     stack.pop();
-                else
-                    continue;
+                }
             } else if(!string.isEmpty()) {
                 stack.push(string);
             }
