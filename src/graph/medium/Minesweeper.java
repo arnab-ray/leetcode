@@ -15,7 +15,6 @@ public class Minesweeper {
         if(board[x][y] == 'M') {
             board[x][y] = 'X';
         } else {
-            boolean[][] visited = new boolean[m][n];
             Queue<int[]> queue = new LinkedList<>();
             queue.add(new int[] {x, y});
 
