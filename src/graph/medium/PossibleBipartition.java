@@ -15,10 +15,10 @@ public class PossibleBipartition {
 
         while (!queue.isEmpty()) {
             Integer u = queue.poll();
-            for(Integer v : adjList.get(u)) {
+            for (Integer v : adjList.get(u)) {
                 if (colour[v] == colour[u])
                     return false;
-                if(!visited[v]) {
+                if (!visited[v]) {
                     colour[v] = colour[u] == 1 ? 2 : 1;
                     visited[v] = true;
                     queue.add(v);
@@ -30,14 +30,14 @@ public class PossibleBipartition {
     }
 
     public boolean possibleBipartition(int n, int[][] dislikes) {
-        if(n == 0 || n == 1)
+        if (n == 0 || n == 1)
             return true;
 
         boolean[] visited = new boolean[n];
         int[] colour = new int[n];
 
         List<List<Integer>> adjList = new ArrayList<>(n);
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             adjList.add(new ArrayList<>());
         }
 
@@ -47,12 +47,12 @@ public class PossibleBipartition {
         }
 
         boolean result = true;
-        for(int i = 0; i < n; i++) {
-            if(!visited[i]) {
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
                 result = bfsUtil(i, visited, colour, adjList);
             }
 
-            if(!result)
+            if (!result)
                 break;
         }
 
