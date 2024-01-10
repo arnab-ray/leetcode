@@ -1,6 +1,6 @@
 package arrays.medium;
 
-public class Search2D {
+    public class Search2D {
     public boolean searchMatrix(int[][] matrix, int target) {
         if(matrix.length == 0)
             return false;
