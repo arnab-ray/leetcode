@@ -21,12 +21,7 @@ public class SortCharsByFreq {
         }
     }
 
-    private final Comparator<CharFreq> comparator = new Comparator<CharFreq>() {
-        @Override
-        public int compare(CharFreq o1, CharFreq o2) {
-            return o2.f - o1.f;
-        }
-    };
+    private final Comparator<CharFreq> comparator = (o1, o2) -> o2.f - o1.f;
 
     public String frequencySort(String s) {
         Map<Character, Integer> map = new HashMap<>();

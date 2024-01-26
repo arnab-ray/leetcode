@@ -22,12 +22,7 @@ public class KPairsSmallestSum {
         }
     }
 
-    private final Comparator<NumSum> comparator = new Comparator<NumSum>() {
-        @Override
-        public int compare(NumSum o1, NumSum o2) {
-            return o1.sum - o2.sum;
-        }
-    };
+    private final Comparator<NumSum> comparator = (o1, o2) -> o1.sum - o2.sum;
 
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         PriorityQueue<NumSum> queue = new PriorityQueue<>(comparator);
