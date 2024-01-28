@@ -10,19 +10,21 @@ public class Permutations2 {
         boolean[] visited = new boolean[nums.length];
         Arrays.sort(nums);
 
-        calculatePermutation(nums, visited, list, result);
+        backtrack(nums, visited, list, result);
 
         return result;
     }
 
-    public void calculatePermutation(int[] nums, boolean[] visited, List<Integer> list, List<List<Integer>> result) {
-        if (list.size() == nums.length)
+    public void backtrack(int[] nums, boolean[] visited, List<Integer> list, List<List<Integer>> result) {
+        if (list.size() == nums.length) {
             result.add(new ArrayList<>(list));
+            return;
+        }
         for (int i = 0; i < nums.length; i++) {
             if(visited[i] || (i > 0 && nums[i - 1] == nums[i] && !visited[i - 1])) continue;
             visited[i] = true;
             list.add(nums[i]);
-            calculatePermutation(nums, visited, list, result);
+            backtrack(nums, visited, list, result);
             list.remove(list.size() - 1);
             visited[i] = false;
         }

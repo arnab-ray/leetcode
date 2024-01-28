@@ -10,18 +10,20 @@ public class Permutations {
         List<List<Integer>> result = new LinkedList<>();
         List<Integer> list = new LinkedList<>();
 
-        calculatePermutation(nums, list, result);
+        backtrack(nums, list, result);
 
         return result;
     }
 
-    public void calculatePermutation(int[] nums, List<Integer> list, List<List<Integer>> result) {
-        if (list.size() == nums.length)
+    public void backtrack(int[] nums, List<Integer> list, List<List<Integer>> result) {
+        if (list.size() == nums.length) {
             result.add(new ArrayList<>(list));
+            return;
+        }
         for (int num : nums) {
             if (list.contains(num)) continue;
             list.add(num);
-            calculatePermutation(nums, list, result);
+            backtrack(nums, list, result);
             list.remove(list.size() - 1);
         }
     }
