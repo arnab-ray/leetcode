@@ -18,7 +18,6 @@ public class Subsets {
 
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> list = new LinkedList<>();
-        Arrays.sort(nums);
         backtrack(nums, 0, new LinkedList<>(), list);
 
         return list;
