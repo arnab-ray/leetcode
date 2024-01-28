@@ -18,15 +18,15 @@ public class Permutations2 {
     public void backtrack(int[] nums, boolean[] visited, List<Integer> list, List<List<Integer>> result) {
         if (list.size() == nums.length) {
             result.add(new ArrayList<>(list));
-            return;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if(visited[i] || (i > 0 && nums[i - 1] == nums[i] && !visited[i - 1])) continue;
-            visited[i] = true;
-            list.add(nums[i]);
-            backtrack(nums, visited, list, result);
-            list.remove(list.size() - 1);
-            visited[i] = false;
+        } else {
+            for (int i = 0; i < nums.length; i++) {
+                if (visited[i] || (i > 0 && nums[i - 1] == nums[i] && !visited[i - 1])) continue;
+                visited[i] = true;
+                list.add(nums[i]);
+                backtrack(nums, visited, list, result);
+                list.remove(list.size() - 1);
+                visited[i] = false;
+            }
         }
     }
 }
