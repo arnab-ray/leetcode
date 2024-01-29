@@ -23,9 +23,10 @@ public class ReverseLL2 {
 
         ListNode prev = temp;
         ListNode curr = temp.next;
+        ListNode next = null;
 
         for (int i = 0; i < right - left + 1; i++) {
-            ListNode next = curr.next;
+            next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
