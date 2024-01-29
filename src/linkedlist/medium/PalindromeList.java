@@ -53,12 +53,14 @@ public class PalindromeList {
     }
 
     private boolean isPalindromeUtil(ListNode head1, ListNode head2) {
-        while (head1 != null && head2 != null) {
-            if(head1.val != head2.val)
+        ListNode temp1 = head1;
+        ListNode temp2 = head2;
+        while (temp1 != null && temp2 != null) {
+            if(temp1.val != temp2.val)
                 return false;
 
-            head1 = head1.next;
-            head2 = head2.next;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
         }
         return true;
     }
