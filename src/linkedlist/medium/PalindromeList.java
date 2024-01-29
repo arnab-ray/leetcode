@@ -72,6 +72,8 @@ public class PalindromeList {
 
         ListNode middleNode = getMiddleNode(head);
         ListNode secondHead = size % 2 == 0 ? reverseLL(middleNode) : reverseLL(middleNode.next);
-        return isPalindromeUtil(head, secondHead);
+        boolean isPalindrome = isPalindromeUtil(head, secondHead);
+        reverseLL(secondHead);
+        return isPalindrome;
     }
 }
