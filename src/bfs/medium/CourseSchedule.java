@@ -1,12 +1,10 @@
 package bfs.medium;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class CourseSchedule {
 
-    private boolean bfsUtil(int numCourses, int[] inDegree, List<List<Integer>> adjList) {
+    private boolean bfsUtil(int numCourses, int[] inDegree, Map<Integer, List<Integer>> adjList) {
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] == 0) {
@@ -31,10 +29,10 @@ public class CourseSchedule {
         if(numCourses <= 0)
             return true;
 
-       List<List<Integer>> adjList = new LinkedList<>();
+       Map<Integer, List<Integer>> adjList = new HashMap<>();
         int[] inDegree = new int[numCourses];
         for(int i = 0; i < numCourses; i++)
-            adjList.add(new LinkedList<>());
+            adjList.put(i, new LinkedList<>());
 
         for (int[] e : prerequisites) {
             adjList.get(e[1]).add(e[0]);
