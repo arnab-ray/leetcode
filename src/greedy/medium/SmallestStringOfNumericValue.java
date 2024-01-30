@@ -9,7 +9,7 @@ public class SmallestStringOfNumericValue {
 
         k -= n;
         while (k > 0) {
-            result[--n] += Math.min(25, k);
+            result[--n] += (char) Math.min(25, k);
             k -= Math.min(25, k);
         }
 

@@ -28,7 +28,7 @@ public class ScoreOnFlippingMatrix {
         int sum = 0;
         for (int[] ints : A) {
             for (int j = 0; j < A[0].length; j++) {
-                sum += ints[j] * Math.pow(2, A[0].length - j - 1);
+                sum += (int) (ints[j] * Math.pow(2, A[0].length - j - 1));
             }
         }
 
