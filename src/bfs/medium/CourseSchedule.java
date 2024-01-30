@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class CourseSchedule {
 
-    private boolean bfsUtil(int numCourses, int[] inDegree, List<Integer>[] adjList) {
+    private boolean bfsUtil(int numCourses, int[] inDegree, List<List<Integer>> adjList) {
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] == 0) {
@@ -16,7 +16,7 @@ public class CourseSchedule {
 
         while (!queue.isEmpty()) {
             int u = queue.poll();
-            for(int v : adjList[u]) {
+            for(int v : adjList.get(u)) {
                 inDegree[v]--;
                 if(inDegree[v] == 0)
                     queue.add(v);
@@ -31,13 +31,13 @@ public class CourseSchedule {
         if(numCourses <= 0)
             return true;
 
-        List<Integer>[] adjList = new LinkedList[numCourses];
+       List<List<Integer>> adjList = new LinkedList<>();
         int[] inDegree = new int[numCourses];
         for(int i = 0; i < numCourses; i++)
-            adjList[i] = new LinkedList<>();
+            adjList.add(new LinkedList<>());
 
         for (int[] e : prerequisites) {
-            adjList[e[1]].add(e[0]);
+            adjList.get(e[1]).add(e[0]);
             inDegree[e[0]]++;
         }
 
