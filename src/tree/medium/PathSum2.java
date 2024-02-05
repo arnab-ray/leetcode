@@ -18,28 +18,27 @@ public class PathSum2 {
         }
     }
 
-    private void evaluatePath(TreeNode root, List<Integer> path, AtomicInteger sumTillNow, List<List<Integer>> result, int sum) {
-        if(root == null)
+    private void pathSumUtil(TreeNode root, int targetSum, int currSum, List<Integer> path, List<List<Integer>> result) {
+        if (root == null)
             return;
 
-        sumTillNow.set(sumTillNow.get() + root.val);
+        int sum = currSum + root.val;
         path.add(root.val);
-        if(sumTillNow.get() == sum && root.left == null && root.right == null) {
+
+        if (root.left == null && root.right == null && sum == targetSum) {
             result.add(new LinkedList<>(path));
         }
 
-        evaluatePath(root.left, path, sumTillNow, result, sum);
-        evaluatePath(root.right, path, sumTillNow, result, sum);
+        pathSumUtil(root.left, targetSum, sum, path, result);
+        pathSumUtil(root.right, targetSum, sum, path, result);
 
-        sumTillNow.set(sumTillNow.get() - root.val);
         path.remove(path.size() - 1);
     }
 
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
          List<List<Integer>> result = new LinkedList<>();
-         AtomicInteger sumTillNow = new AtomicInteger(0);
          List<Integer> path = new LinkedList<>();
-         evaluatePath(root, path, sumTillNow, result, sum);
+         pathSumUtil(root, sum, 0, path, result);
 
          return result;
     }
